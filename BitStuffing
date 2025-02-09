@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main() {
+    int count = 0, bytes_arr[16], size =8, i, j;
+    printf("Enter the bits: ");
+    for (i = 0; i < size; i++) {
+        scanf("%d", &bytes_arr[i]);
+    }
+   
+    printf("The original bits data given by user is: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", bytes_arr[i]);
+    }
+    printf("\n");
+
+
+    for (i = 0; i < size - 1; i++) {
+        if (bytes_arr[i] == 1 && bytes_arr[i + 1] == 1) {
+            if (count < 5) {
+                count++;
+                if (count == 5) {
+                 
+                    for (j = size; j >i; j--) {
+                        bytes_arr[j] = bytes_arr[j - 1];
+                    }
+                    bytes_arr[i + 1] = 0;
+                    size++;
+               
+
+                }
+               
+            }
+        }
+    }
+
+ 
+    printf("The modified bits data is: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", bytes_arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
